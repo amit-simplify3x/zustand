@@ -1,6 +1,15 @@
 import React from 'react'
+import {useCartStore} from '../store/cart-store'
 
-const Cart = ({cart,setCart}) => {
+const Cart = () => {
+  
+    const {cart,removeFromCart,clearCart}=useCartStore((state)=>({
+     cart:state.cart,
+     removeFromCart:state.removeFromCart,
+     clearCart:state
+    
+    }))
+
   return (
     <div>
       <h2>Cart</h2>
@@ -17,9 +26,7 @@ const Cart = ({cart,setCart}) => {
               cursor: "pointer",
             }}
             onClick={() =>
-              setCart(
-                cart.filter((productItem) => productItem.id !== product.id)
-              )
+             removeFromCart(product.id)
             }
           >
             Remove
@@ -27,7 +34,7 @@ const Cart = ({cart,setCart}) => {
         </div>
       ))}
       {cart.length > 0 && (
-        <button onClick={() => setCart([])}>Clear Cart</button>
+        <button onClick={clearCart}>Clear Cart</button>
       )}
     </div>
   );

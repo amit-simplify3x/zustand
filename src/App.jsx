@@ -10,9 +10,9 @@ const [cart,setCart]=useState([]);
   return (
     <>
       <h3>Welcome to sotre</h3>
-      <Product products={PRODUCTS} setCart={setCart} />
+      <Product products={PRODUCTS}  />
 
-      <Cart setCart={setCart} cart={cart} />
+      <Cart/>
     </>
   );
 }

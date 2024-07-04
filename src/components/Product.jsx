@@ -1,6 +1,8 @@
 import React from 'react'
+import { useCartStore } from "../store/cart-store";
 
-const Product = ({products,setCart}) => {
+const Product = ({products}) => {
+    const addToCart=useCartStore((state)=>state.addToCart)
   return (
     <div>
       {products?.map((product) => (
@@ -16,7 +18,7 @@ const Product = ({products,setCart}) => {
               borderRadius: "5px",
               cursor: "pointer",
             }}
-            onClick={() => setCart((cart) => [...cart, product])}
+            onClick={() => addToCart(product)}
           >
             Add to cart
           </button>
